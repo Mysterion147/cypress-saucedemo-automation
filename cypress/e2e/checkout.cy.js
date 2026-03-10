@@ -1,6 +1,7 @@
 describe("Checkout Flow", () => {
   beforeEach(function () {
     cy.fixture("users").as("userData");
+    cy.fixture("customers").as("customerData");
     cy.visit("/");
 
     cy.get("@userData").then((data) => {
@@ -29,11 +30,10 @@ describe("Checkout Flow", () => {
     cy.get('[data-test="shopping-cart-link"]').click();
     cy.get('[data-test="checkout"]').click();
 
-    // filling form
-    cy.get('[data-test="firstName"]').type("John");
-    cy.get('[data-test="lastName"]').type("Doe");
-    cy.get('[data-test="postalCode"]').type("147147");
-    cy.get('[data-test="continue"]').click();
+    // filling form with function
+    cy.get("@customerData").then((data) => {
+      cy.forms(data.standard.firstName, data.standard.lastName, data.standard.zipCode);
+    });
 
     // assertion -> ensuring data integrity after changing pages
     cy.get("@selectedItemName").then((name) => {
@@ -65,10 +65,10 @@ describe("Checkout Flow", () => {
     cy.get('[data-test="shopping-cart-link"]').click();
     cy.get('[data-test="checkout"]').click();
 
-    // leaving "Last Name" empty
-    cy.get('[data-test="firstName"]').type("John");
-    cy.get('[data-test="postalCode"]').type("147147");
-    cy.get('[data-test="continue"]').click();
+    // filling form with function (no Last Name)
+    cy.get("@customerData").then((data) => {
+      cy.forms(data.standard.firstName, "{backspace}", data.standard.zipCode);
+    });
 
     // assertions -> checking if the error is visible and has the correct text
     cy.get('[data-test="error"]')
@@ -82,10 +82,10 @@ describe("Checkout Flow", () => {
     cy.get('[data-test="shopping-cart-link"]').click();
     cy.get('[data-test="checkout"]').click();
 
-    // leaving "First Name" empty
-    cy.get('[data-test="lastName"]').type("Doe");
-    cy.get('[data-test="postalCode"]').type("147147");
-    cy.get('[data-test="continue"]').click();
+    // filling form with function (no First Name)
+    cy.get("@customerData").then((data) => {
+      cy.forms("{backspace}", data.standard.lastName, data.standard.zipCode);
+    });
 
     // assertions -> checking if the error is visible and has the correct text
     cy.get('[data-test="error"]')
@@ -99,14 +99,28 @@ describe("Checkout Flow", () => {
     cy.get('[data-test="shopping-cart-link"]').click();
     cy.get('[data-test="checkout"]').click();
 
-    // leaving "Zip/Postal Code" empty
-    cy.get('[data-test="firstName"]').type("John");
-    cy.get('[data-test="lastName"]').type("Doe");
-    cy.get('[data-test="continue"]').click();
+    // filling form with function (no Zip/Postal Code)
+    cy.get("@customerData").then((data) => {
+      cy.forms(data.standard.firstName, data.standard.lastName, "{backspace}");
+    });
 
     // assertions -> checking if the error is visible and has the correct text
     cy.get('[data-test="error"]')
       .should("be.visible")
       .and("contain.text", "Error: Postal Code is required");
+  });
+
+  it("Should be able to cancel at any point and return to Home Page", function () {
+    // populating cart and checking out
+    cy.get(".inventory_item").first().find("button").click();
+    cy.get('[data-test="shopping-cart-link"]').click();
+    cy.get('[data-test="checkout"]').click();
+
+     // going back
+     cy.get('[data-test="cancel"]').click();
+     cy.get('[data-test="continue-shopping"]').click();
+
+     // assertion -> checking the url
+     cy.url().should("include", "/inventory.html");
   });
 });
