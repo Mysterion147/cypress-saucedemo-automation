@@ -82,7 +82,7 @@ The project uses a processing pipeline that clears previous runs, executes the t
 
 Este repositório contém uma suíte de testes automatizados com Cypress para o site [SauceDemo](https://www.saucedemo.com/), focada em demonstrar boas práticas de engenharia de QA, escalabilidade e manutenção de código.
 
-## ⭐ Interactive Report
+## ⭐ Relatório Interativo
 Se você simplesmente deseja visualizar o último relatório de execução de testes online acesse este link:
 [View Live Report](https://Mysterion147.github.io/cypress-saucedemo-automation/cypress/reports-html/index.html)
 
