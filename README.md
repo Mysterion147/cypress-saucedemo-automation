@@ -14,6 +14,10 @@
 
 This repository contains a Cypress automated test suite for the [SauceDemo](https://www.saucedemo.com/) website, focused on demonstrating QA engineering best practices, scalability, and code maintainability.
 
+## ⭐ Interactive Report
+If you simply wish to view the latest test execution results online you can do it here:
+[View Live Report](https://seu-usuario.github.io/nome-do-repositorio/cypress/reports-html/index.html)
+
 ## 🛠️ Technologies and Tools
 * **Framework:** [Cypress](https://www.cypress.io/) (v15+)
 * **Language:** JavaScript
@@ -77,6 +81,10 @@ The project uses a processing pipeline that clears previous runs, executes the t
 ### Versão em Português
 
 Este repositório contém uma suíte de testes automatizados com Cypress para o site [SauceDemo](https://www.saucedemo.com/), focada em demonstrar boas práticas de engenharia de QA, escalabilidade e manutenção de código.
+
+## ⭐ Interactive Report
+Se você simplesmente deseja visualizar o último relatório de execução de testes online acesse este link:
+[View Live Report](https://seu-usuario.github.io/nome-do-repositorio/cypress/reports-html/index.html)
 
 ## 🛠️ Tecnologias e Ferramentas
 * **Framework:** [Cypress](https://www.cypress.io/) (v15+)
