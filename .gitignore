@@ -3,7 +3,6 @@ node_modules/
 cypress/screenshots/
 cypress/videos/
 cypress/reports/
-cypress/reports-html/
 
 # Cypress specific files
 cypress/screenshots/
