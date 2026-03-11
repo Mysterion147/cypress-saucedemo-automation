@@ -4,12 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:run": "npx cypress run",
+    "prereport": "npx rimraf cypress/reports",
+    "report:merge": "npx mochawesome-merge cypress/reports/*.json -o cypress/reports/full_report.json",
+    "report:gen": "npx mochawesome-report-generator cypress/reports/full_report.json --reportDir cypress/reports-html --reportFilename index",
+    "test:report": "npm run prereport && npm run cy:run && npm run report:merge && npm run report:gen"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^15.11.0"
+    "cypress": "^15.11.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
+    "rimraf": "^6.1.3"
   }
 }

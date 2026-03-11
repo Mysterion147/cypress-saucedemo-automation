@@ -14,39 +14,40 @@ describe("Checkout Flow (POM Version)", () => {
   });
 
   it("Should complete a purchase with dynamic name, price and tax validation", function () {
-    // saving both name and price of the first item
-    inventoryPage.elements.inventoryItems().first().within(() => {
-      inventoryPage.elements.itemNames().invoke('text').as('selectedItemName');
-      inventoryPage.elements.itemPrices().invoke('text').then((text) => {
-        cy.wrap(parseFloat(text.replace("$", ""))).as("selectedItemPrice");
-      });
-      cy.get("button").click();
-    });
+  inventoryPage.elements.inventoryItems().first().then(($item) => {
+    const name = $item.find('.inventory_item_name').text();
+    const priceText = $item.find('.inventory_item_price').text();
+    const priceValue = parseFloat(priceText.replace("$", ""));
 
-    checkoutPage.goToCheckout();
+    cy.wrap(name).as('selectedItemName');
+    cy.wrap(priceValue).as('selectedItemPrice');
 
-    cy.get("@customerData").then((data) => {
-      checkoutPage.fillInfo(data.standard.firstName, data.standard.lastName, data.standard.zipCode);
-    });
-
-    cy.get("@selectedItemName").then((name) => {
-      inventoryPage.elements.itemNames().should("have.text", name);
-    });
-
-    cy.get("@selectedItemPrice").then((originalPrice) => {
-      checkoutPage.elements.summarySubtotal().should("contain", originalPrice);
-
-      checkoutPage.elements.summaryTax().then(($taxEl) => {
-        const taxValue = parseFloat($taxEl.text().replace("Tax: $", ""));
-        const expectedTotal = (originalPrice + taxValue).toFixed(2);
-        checkoutPage.elements.summaryTotal().should("contain", expectedTotal);
-      });
-    });
-
-    // final assertion -> check if we got to the ending page
-    checkoutPage.elements.finishBtn().click();
-    checkoutPage.elements.completeHeader().should("have.text", "Thank you for your order!");
+    cy.wrap($item).find('button').click();
   });
+
+  checkoutPage.goToCheckout();
+
+  cy.get("@customerData").then((data) => {
+    checkoutPage.fillInfo(data.standard.firstName, data.standard.lastName, data.standard.zipCode);
+  });
+
+  cy.get("@selectedItemName").then((name) => {
+    cy.get(".inventory_item_name").should("have.text", name);
+  });
+
+  cy.get("@selectedItemPrice").then((originalPrice) => {
+    checkoutPage.elements.summarySubtotal().should("contain", originalPrice);
+
+    checkoutPage.elements.summaryTax().then(($taxEl) => {
+      const taxValue = parseFloat($taxEl.text().replace("Tax: $", ""));
+      const expectedTotal = (originalPrice + taxValue).toFixed(2);
+      checkoutPage.elements.summaryTotal().should("contain", expectedTotal);
+    });
+  });
+
+  checkoutPage.elements.finishBtn().click();
+  checkoutPage.elements.completeHeader().should("have.text", "Thank you for your order!");
+});
   
   // Data-Driven Testing Approach
   const errorScenarios = [
