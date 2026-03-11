@@ -16,7 +16,7 @@ This repository contains a Cypress automated test suite for the [SauceDemo](http
 
 ## ⭐ Interactive Report
 If you simply wish to view the latest test execution results online you can do it here:
-[View Live Report](https://seu-usuario.github.io/nome-do-repositorio/cypress/reports-html/index.html)
+[View Live Report](https://Mysterion147.github.io/cypress-saucedemo-automation/cypress/reports-html/index.html)
 
 ## 🛠️ Technologies and Tools
 * **Framework:** [Cypress](https://www.cypress.io/) (v15+)
@@ -84,7 +84,7 @@ Este repositório contém uma suíte de testes automatizados com Cypress para o 
 
 ## ⭐ Interactive Report
 Se você simplesmente deseja visualizar o último relatório de execução de testes online acesse este link:
-[View Live Report](https://seu-usuario.github.io/nome-do-repositorio/cypress/reports-html/index.html)
+[View Live Report](https://Mysterion147.github.io/cypress-saucedemo-automation/cypress/reports-html/index.html)
 
 ## 🛠️ Tecnologias e Ferramentas
 * **Framework:** [Cypress](https://www.cypress.io/) (v15+)
