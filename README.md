@@ -45,7 +45,7 @@ cypress/
 ### 1. Installation
 Clone the repository and install the dependencies:
 ```bash
-git clone [https://github.com/your-username/cypress-saucedemo-automation.git](https://github.com/your-username/cypress-saucedemo-automation.git)
+git clone [https://github.com/Mysterion147/cypress-saucedemo-automation.git](https://github.com/Mysterion147/cypress-saucedemo-automation.git)
 cd cypress-saucedemo-automation
 npm install
 ```
