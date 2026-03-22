@@ -1,3 +1,5 @@
+[![Cypress E2E Tests](https://github.com/Mysterion147/cypress-saucedemo-automation/actions/workflows/cypress-tests.yml/badge.svg)](https://github.com/Mysterion147/cypress-saucedemo-automation/actions/workflows/cypress-tests.yml)
+
 ![Cypress](https://img.shields.io/badge/-Cypress-%2317202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
