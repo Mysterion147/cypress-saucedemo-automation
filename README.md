@@ -14,9 +14,29 @@
 
 This repository contains a Cypress automated test suite for the [SauceDemo](https://www.saucedemo.com/) website, focused on demonstrating QA engineering best practices, scalability, and code maintainability.
 
-## ⭐ Interactive Report
-If you simply wish to view the latest test execution results online you can do it here:
-[View Live Report](https://Mysterion147.github.io/cypress-saucedemo-automation/cypress/reports-html/index.html)
+## ⚙️ CI/CD & E2E Testing Automation
+This project utilizes **GitHub Actions** to ensure UI quality and critical flow integrity through end-to-end (E2E) testing.
+
+* **Continuous Integration (CI):** The pipeline is triggered on every push, performing Node.js environment setup, dependency installation via `npm ci`, and executing tests in *headless* mode.
+* **Mochawesome Reporting:** After execution, the `test:report` script is triggered to consolidate results into a static HTML report.
+* **Continuous Delivery (CD):** The final artifact is automatically delivered via **GitHub Pages**, allowing for result visualization without the need for local execution.
+
+### 📊 E2E Execution Report
+You can track the status of the latest execution and the details of each test scenario here:
+[**View Live Cypress Report 📈**](https://mysterion147.github.io/cypress-saucedemo-automation/e2e-tests/)
+
+## 🚀 Run Locally
+To run the tests and generate the report on your machine:
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+2. **Abrir o Cypress (Interface Gráfica):**
+   ```bash
+   npx cypress open
+3. **Rodar Testes e Gerar Relatório (CLI):**
+   ```bash
+   npm run test:report
 
 ## 🛠️ Technologies and Tools
 * **Framework:** [Cypress](https://www.cypress.io/) (v15+)
@@ -40,33 +60,6 @@ cypress/
 └── reports-html/            # Consolidated visual report (HTML)
 ```
 
-## 🚀 How to Run
-
-### 1. Installation
-Clone the repository and install the dependencies:
-```bash
-git clone [https://github.com/Mysterion147/cypress-saucedemo-automation.git](https://github.com/Mysterion147/cypress-saucedemo-automation.git)
-cd cypress-saucedemo-automation
-npm install
-```
-
-### 2. Running Tests
-* **Headless Mode with Automatic Reporting (Recommended):**
-  ```bash
-  npm run test:report
-  ```
-* **Interactive Mode (Cypress UI):**
-  ```bash
-  npx cypress open
-  ```
-
-## 📊 Execution Reports
-The project uses a processing pipeline that clears previous runs, executes the tests, and generates a visual dashboard:
-
-* **Report Location:** `cypress/reports-html/index.html`
-* **Features:** Status filters (Pass/Fail), execution time, error details, and integrated screenshots.
-<img width="1860" height="915" alt="image" src="https://github.com/user-attachments/assets/ff280a2c-200d-46d1-baae-f23efbd23087" />
-
 
 ## 🧪 Covered Test Scenarios
 - **Authentication:** Login with different user profiles, error message validations and Logout funcionality.
@@ -82,9 +75,29 @@ The project uses a processing pipeline that clears previous runs, executes the t
 
 Este repositório contém uma suíte de testes automatizados com Cypress para o site [SauceDemo](https://www.saucedemo.com/), focada em demonstrar boas práticas de engenharia de QA, escalabilidade e manutenção de código.
 
-## ⭐ Relatório Interativo
-Se você simplesmente deseja visualizar o último relatório de execução de testes online acesse este link:
-[View Live Report](https://Mysterion147.github.io/cypress-saucedemo-automation/cypress/reports-html/index.html)
+## ⚙️ CI/CD & Automação de Testes E2E
+Este projeto utiliza **GitHub Actions** para garantir a qualidade da interface e dos fluxos críticos através de testes de ponta a ponta (E2E).
+
+* **Integração Contínua (CI):** O pipeline é disparado a cada push, realizando o setup do ambiente Node.js, instalação de dependências via `npm ci` e execução dos testes em modo *headless*.
+* **Relatórios Mochawesome:** Após a execução, o script `test:report` é acionado para consolidar os resultados em um relatório HTML estático.
+* **Continuous Delivery (CD):** O artefato final é entregue automaticamente via **GitHub Pages**, permitindo a visualização dos resultados sem a necessidade de execução local.
+
+### 📊 Relatório de Execução E2E
+Você pode acompanhar o status da última execução e os detalhes de cada cenário de teste aqui:
+[**Visualizar Relatório Cypress 📈**](https://mysterion147.github.io/cypress-saucedemo-automation/e2e-tests/)
+
+## 🚀 Executar Localmente
+Para rodar os testes e gerar o relatório em sua máquina:
+
+1. **Instalar Dependências:**
+   ```bash
+   npm install
+2. **Abrir o Cypress (Interface Gráfica):**
+   ```bash
+   npx cypress open
+3. **Rodar Testes e Gerar Relatório (CLI):**
+   ```bash
+   npm run test:report
 
 ## 🛠️ Tecnologias e Ferramentas
 * **Framework:** [Cypress](https://www.cypress.io/) (v15+)
@@ -97,8 +110,6 @@ Se você simplesmente deseja visualizar o último relatório de execução de te
 ## 🏗️ Arquitetura do Projeto
 O projeto utiliza a separação de responsabilidades para garantir que os testes sejam fáceis de ler e manter.
 
-
-
 ```text
 cypress/
 ├── e2e/                     # Scripts de teste (.cy.js)
@@ -110,33 +121,6 @@ cypress/
 └── reports-html/            # Relatório visual consolidado (HTML)
 ```
 
-## 🚀 Como Executar
-
-### 1. Instalação
-Clone o repositório e instale as dependências:
-```bash
-git clone [https://github.com/seu-usuario/cypress-saucedemo-automation.git](https://github.com/seu-usuario/cypress-saucedemo-automation.git)
-cd cypress-saucedemo-automation
-npm install
-```
-
-### 2. Executando os Testes
-* **Modo Headless com Relatório Automático (Recomendado):**
-  ```bash
-  npm run test:report
-  ```
-* **Modo Interativo (Interface do Cypress):**
-  ```bash
-  npx cypress open
-  ```
-
-## 📊 Relatórios de Execução
-O projeto utiliza uma esteira de processamento que limpa execuções anteriores, roda os testes e gera um dashboard visual:
-
-* **Localização do Relatório:** `cypress/reports-html/index.html`
-* **Funcionalidades:** Filtros de status (Pass/Fail), tempo de execução, detalhes do erro e screenshots integrados.
-<img width="1860" height="915" alt="image" src="https://github.com/user-attachments/assets/ff280a2c-200d-46d1-baae-f23efbd23087" />
-
 
 ## 🧪 Cenários de Teste Cobertos
 - **Autenticação:** Login com diferentes perfis de usuário, validações de mensagens de erro e funcionalidade de logout.
@@ -147,4 +131,4 @@ O projeto utiliza uma esteira de processamento que limpa execuções anteriores,
     - Validação de erros do formulário e mensagens de sucesso de pedido.
 
 ---
-**Developed by João Pedro Maciel de Souza** *Software Development Engineer in Test (SDET) | QA Automation*
+**Developed by João Pedro Maciel de Souza**
